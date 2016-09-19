@@ -79,8 +79,8 @@ describe("Calculator Tests", function(){
   })
 
   it('Can take an operator as an argument to add', function(){
-    var result = calculator.divide(0.005, 2.005)
-    assert.equal(result.toFixed(8), 0.00249377)
+    var result = calculator.calc(10, 10, "+")
+    assert.equal(result, 20)
   })
 
 
