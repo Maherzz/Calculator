@@ -15,6 +15,10 @@ Calculator.prototype = {
     return n1 * n2
   },
 
+  devide: function(n1, n2){
+    return n1 / n2
+  }
+
 }
 
 module.exports = Calculator;
