@@ -17,6 +17,11 @@ describe("Calculator Tests", function(){
     assert.equal(result, 10)
   })
 
+  it('Can add two 0.1 and 0.2 and fix floating point problem', function(){
+    var result = calculator.add(0.1,0.2)
+    assert.equal(result, 0.3)
+  })
+
   it('Can subtract two numbers and return correct result', function(){
     var result = calculator.subtract(3, 10)
     assert.equal(result, 7)
@@ -28,7 +33,7 @@ describe("Calculator Tests", function(){
   })
 
   it('Can devide two numbers and return correct result', function(){
-    var result = calculator.devide(10, 2)
+    var result = calculator.divide(10, 2)
     assert.equal(result, 5)
   })
 
@@ -64,14 +69,21 @@ describe("Calculator Tests", function(){
   })
 
   it('Can multiply two decimal numbers', function(){
-    var result = calculator.devide(1.1, 1.5)
-    assert.equal(result, 1.65)
+    var result = calculator.divide(2.5, 2.05)
+    assert.equal(result.toFixed(8), 1.2195122)
   })
 
   it('Can multiply two decimal numbers two 3 decimals places', function(){
-    var result = calculator.devide(0.005, 2.005)
-    assert.equal(result, 0.010025)
+    var result = calculator.divide(0.005, 2.005)
+    assert.equal(result.toFixed(8), 0.00249377)
   })
+
+  it('Can take an operator as an argument to add', function(){
+    var result = calculator.divide(0.005, 2.005)
+    assert.equal(result.toFixed(8), 0.00249377)
+  })
+
+
 
 
 })
