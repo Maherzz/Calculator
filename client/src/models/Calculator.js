@@ -9,7 +9,8 @@ Calculator.prototype = {
   },
 
   subtract: function(n1, n2){
-    return n2 - n1
+    var result = ((n2 * 1000) - (n1 * 1000)) / 1000;
+    return result
   },
 
   multiply: function(n1, n2){

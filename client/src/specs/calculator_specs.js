@@ -44,13 +44,13 @@ describe("Calculator Tests", function(){
 
 
   it('Can subtract two decimal numbers', function(){
-    var result = calculator.add(1.2, 1.3)
-    assert.equal(result, 2.5)
+    var result = calculator.subtract(1.1, 1.5)
+    assert.equal(result, 0.4)
   })
 
   it('Can subtract two decimal numbers two 3 decimals places', function(){
-    var result = calculator.add(0.015, 5.185)
-    assert.equal(result, 5.2)
+    var result = calculator.subtract(0.185, 5.185)
+    assert.equal(result, 5)
   })
 
 
