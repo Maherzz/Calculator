@@ -1,4 +1,4 @@
-var Product = require('../models/Calculator')
+var Calculator = require('../models/Calculator')
 var assert = require('chai').assert
 
 
@@ -16,6 +16,18 @@ describe("Calculator Tests", function(){
     var result = calculator.add(3,7)
     assert.equal(result, 10)
   })
+
+  it('Can subtract two numbers and return correct result', function(){
+    var result = calculator.subtract(3, 10)
+  })
+
+  // it('Can multiply two numbers and return correct result', function(){
+
+  // })
+
+  // it('Can devide two numbers and return correct result', function(){
+
+  // })
 
 
 })
