@@ -53,5 +53,25 @@ describe("Calculator Tests", function(){
     assert.equal(result, 5)
   })
 
+  it('Can multiply two decimal numbers', function(){
+    var result = calculator.multiply(1.1, 1.5)
+    assert.equal(result, 1.65)
+  })
+
+  it('Can multiply two decimal numbers two 3 decimals places', function(){
+    var result = calculator.multiply(0.005, 2.005)
+    assert.equal(result, 0.010025)
+  })
+
+  it('Can multiply two decimal numbers', function(){
+    var result = calculator.devide(1.1, 1.5)
+    assert.equal(result, 1.65)
+  })
+
+  it('Can multiply two decimal numbers two 3 decimals places', function(){
+    var result = calculator.devide(0.005, 2.005)
+    assert.equal(result, 0.010025)
+  })
+
 
 })

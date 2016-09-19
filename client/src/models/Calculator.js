@@ -14,7 +14,8 @@ Calculator.prototype = {
   },
 
   multiply: function(n1, n2){
-    return n1 * n2
+    var result = ((n1 * 1000) * (n2 * 1000)) / 1000000;
+    return result
   },
 
   devide: function(n1, n2){
