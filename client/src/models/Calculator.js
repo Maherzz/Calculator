@@ -8,8 +8,12 @@ Calculator.prototype = {
   },
 
   subtract: function(n1, n2){
-    return n1 - n2
-  }
+    return n2 - n1
+  },
+
+  multiply: function(n1, n2){
+    return n1 * n2
+  },
 
 }
 

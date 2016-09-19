@@ -19,11 +19,13 @@ describe("Calculator Tests", function(){
 
   it('Can subtract two numbers and return correct result', function(){
     var result = calculator.subtract(3, 10)
+    assert.equal(result, 7)
   })
 
-  // it('Can multiply two numbers and return correct result', function(){
-
-  // })
+  it('Can multiply two numbers and return correct result', function(){
+    var result = calculator.multiply(5, 5)
+    assert.equal(result, 25)
+  })
 
   // it('Can devide two numbers and return correct result', function(){
 
