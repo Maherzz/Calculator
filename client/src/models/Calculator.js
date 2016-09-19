@@ -1,5 +1,5 @@
 
-var Calculator = function({}
+var Calculator = function(){}
 
 Calculator.prototype = {
 
