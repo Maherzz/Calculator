@@ -22,7 +22,7 @@ var CalculatorBox = React.createClass({
         <div className="col-6">
 
           <div className="row">
-
+            <input type="text" class="number-display" value={null} readonly>
           </div>
 
           <div className="row">

@@ -8,18 +8,6 @@ Calculator.prototype = {
     if(this.isInvalidInput(splitInput)){return "Invalid input"}
     splitInput = this.bodmasCalc(splitInput, ["*", "/"])
     splitInput = this.bodmasCalc(splitInput, ["+", "-"])
-    // var newArray = splitInput
-    // while(splitInput.length > 1){
-    //   for(var i = 0; i < newArray.length; i++){
-    //     if(this.isAnOperator(newArray[i])){
-    //       splitInput[i] = this.calc(splitInput[i - 1], splitInput[i + 1], splitInput[i])
-    //       splitInput.splice(i -1, 1)
-    //       splitInput.splice(i, 1)
-    //       break
-    //     }
-    //   }
-    //   var newArray = splitInput
-    // }
     return splitInput[0]
   },
 
@@ -57,14 +45,6 @@ Calculator.prototype = {
       }
     }
     return false
-  },
-
-  calcMutlAndDivide: function(){
-
-  },
-
-  calcAddAndSubtract: function(){
-
   },
 
   isAnOperatorMultiOrDivide: function(operator){
