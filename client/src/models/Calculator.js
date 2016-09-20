@@ -3,7 +3,43 @@ var Calculator = function(){}
 
 Calculator.prototype = {
 
+  calcInput: function(input){
+    var splitInput = input.split(" ")
+    var newArray = splitInput
+    while(splitInput.length > 1){
+      for(var i = 0; i < newArray.length; i++){
+        if(this.isAnOperator(newArray[i])){
+          var before = i - 1
+          var after = i + 1
+          splitInput[i] = this.calc(splitInput[before], splitInput[after], splitInput[i])
+          splitInput.splice(before, 1)
+          splitInput.splice(i, 1)
+          break
+        }
+      }
+      var newArray = splitInput
+    }
+    return splitInput[0]
+  },
+
+  isValidInput: function(inputArray){
+    for(var i = 0; i < inputArray.length; i++){
+      
+    }
+    return false
+  },
+
+  isAnOperator: function(operator){
+    if(operator === "+" || operator === "-" || operator === "*" || operator === "/"){
+      return true
+    }
+    return false
+  },
+
   calc: function(n1, n2, operator){
+    n1 = parseFloat(n1)
+    n2 = parseFloat(n2)
+    // console.log("Calc:",n1, n2, operator)
     var result = "Invalid operator"
     switch(operator) {
         case "+":
@@ -27,7 +63,7 @@ Calculator.prototype = {
   },
 
   subtract: function(n1, n2){
-    var result = ((n2 * 1000) - (n1 * 1000)) / 1000;
+    var result = ((n1 * 1000) - (n2 * 1000)) / 1000;
     return result
   },
 

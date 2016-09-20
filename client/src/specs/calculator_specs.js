@@ -23,7 +23,7 @@ describe("Calculator Tests", function(){
   })
 
   it('Can subtract two numbers and return correct result', function(){
-    var result = calculator.subtract(3, 10)
+    var result = calculator.subtract(10, 3)
     assert.equal(result, 7)
   })
 
@@ -49,12 +49,12 @@ describe("Calculator Tests", function(){
 
 
   it('Can subtract two decimal numbers', function(){
-    var result = calculator.subtract(1.1, 1.5)
+    var result = calculator.subtract(1.5, 1.1)
     assert.equal(result, 0.4)
   })
 
   it('Can subtract two decimal numbers two 3 decimals places', function(){
-    var result = calculator.subtract(0.185, 5.185)
+    var result = calculator.subtract(5.185, 0.185)
     assert.equal(result, 5)
   })
 
@@ -81,6 +81,31 @@ describe("Calculator Tests", function(){
   it('Can take an operator as an argument to add', function(){
     var result = calculator.calc(10, 10, "+")
     assert.equal(result, 20)
+  })
+
+  it('Can take an operator as an argument to subtract', function(){
+    var result = calculator.calc(10, 5, "-")
+    assert.equal(result, 5)
+  })
+
+  it('Can take an operator as an argument to multiply', function(){
+    var result = calculator.calc(5, 5, "*")
+    assert.equal(result, 25)
+  })
+
+  it('Can take an operator as an argument to divide', function(){
+    var result = calculator.calc(10, 5, "/")
+    assert.equal(result, 2)
+  })
+
+  it('Check for invalid operator', function(){
+    var result = calculator.calc(10, 5, "@")
+    assert.equal(result, "Invalid operator")
+  })
+
+  it('handle multiple operators', function(){
+    var result = calculator.calcInput("10 + 11 * 2")
+    assert.equal(result, 42)
   })
 
 
