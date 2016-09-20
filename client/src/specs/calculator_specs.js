@@ -17,7 +17,7 @@ describe("Calculator Tests", function(){
     assert.equal(result, 10)
   })
 
-  it('Can add two 0.1 and 0.2 and fix floating point problem', function(){
+  it('Can add two 0.1 and 0.2 and work around floating point problem', function(){
     var result = calculator.add(0.1,0.2)
     assert.equal(result, 0.3)
   })
@@ -105,12 +105,22 @@ describe("Calculator Tests", function(){
 
   it('handle multiple operators', function(){
     var result = calculator.calcInput("10 + 11 * 2")
-    assert.equal(result, 42)
+    assert.equal(result, 32)
   })
 
   it('handle invalid format input with extra operator at end of arguement', function(){
     var result = calculator.calcInput("10 + 11 * 2 +")
     assert.equal(result, "Invalid input")
+  })
+
+  it('handle multiple operators like real calculators', function(){
+    var result = calculator.calcInput("6 / 2 * 3")
+    assert.equal(result, 9)
+  })
+
+  it('Can calculate using BODMAS', function(){
+    var result = calculator.calcInput("7 - 1 * 0 + 3 / 3")
+    assert.equal(result, 8)
   })
 
 

@@ -6,10 +6,28 @@ Calculator.prototype = {
   calcInput: function(input){
     var splitInput = input.split(" ")
     if(this.isInvalidInput(splitInput)){return "Invalid input"}
+    splitInput = this.bodmasCalc(splitInput, ["*", "/"])
+    splitInput = this.bodmasCalc(splitInput, ["+", "-"])
+    // var newArray = splitInput
+    // while(splitInput.length > 1){
+    //   for(var i = 0; i < newArray.length; i++){
+    //     if(this.isAnOperator(newArray[i])){
+    //       splitInput[i] = this.calc(splitInput[i - 1], splitInput[i + 1], splitInput[i])
+    //       splitInput.splice(i -1, 1)
+    //       splitInput.splice(i, 1)
+    //       break
+    //     }
+    //   }
+    //   var newArray = splitInput
+    // }
+    return splitInput[0]
+  },
+
+  bodmasCalc: function(splitInput, operatorArray){
     var newArray = splitInput
-    while(splitInput.length > 1){
+    while(this.isSelectedOperatorInArray(splitInput, operatorArray)){
       for(var i = 0; i < newArray.length; i++){
-        if(this.isAnOperator(newArray[i])){
+        if(this.isAnOperator(newArray[i]) && this.isSelectedOperator(newArray[i], operatorArray)){
           splitInput[i] = this.calc(splitInput[i - 1], splitInput[i + 1], splitInput[i])
           splitInput.splice(i -1, 1)
           splitInput.splice(i, 1)
@@ -18,7 +36,49 @@ Calculator.prototype = {
       }
       var newArray = splitInput
     }
-    return splitInput[0]
+    return splitInput
+  },
+
+  isSelectedOperator: function(operator, operatorArray){
+    for(var i = 0; i < operatorArray.length; i++){
+      if(operator === operatorArray[i]){
+        return true
+      }
+    }
+    return false
+  },
+
+  isSelectedOperatorInArray: function(inputArray, operatorArray){
+    for(var input of inputArray){
+      for(var operator of operatorArray){
+        if(operator === input){
+          return true
+        }
+      }
+    }
+    return false
+  },
+
+  calcMutlAndDivide: function(){
+
+  },
+
+  calcAddAndSubtract: function(){
+
+  },
+
+  isAnOperatorMultiOrDivide: function(operator){
+    if(operator === '/' || operator === '*' ){
+      return true
+    }
+    return false
+  },
+
+  isAnOperatorAddOrSubtract: function(operator){
+    if(operator === '+' || operator === '-' ){
+      return true
+    }
+    return false
   },
 
   isInvalidInput: function(inputArray){
@@ -42,7 +102,6 @@ Calculator.prototype = {
   calc: function(n1, n2, operator){
     n1 = parseFloat(n1)
     n2 = parseFloat(n2)
-    // console.log("Calc:",n1, n2, operator)
     var result = "Invalid operator"
     switch(operator) {
         case "+":
