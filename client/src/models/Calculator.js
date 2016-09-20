@@ -5,14 +5,13 @@ Calculator.prototype = {
 
   calcInput: function(input){
     var splitInput = input.split(" ")
+    if(this.isInvalidInput(splitInput)){return "Invalid input"}
     var newArray = splitInput
     while(splitInput.length > 1){
       for(var i = 0; i < newArray.length; i++){
         if(this.isAnOperator(newArray[i])){
-          var before = i - 1
-          var after = i + 1
-          splitInput[i] = this.calc(splitInput[before], splitInput[after], splitInput[i])
-          splitInput.splice(before, 1)
+          splitInput[i] = this.calc(splitInput[i - 1], splitInput[i + 1], splitInput[i])
+          splitInput.splice(i -1, 1)
           splitInput.splice(i, 1)
           break
         }
@@ -22,9 +21,13 @@ Calculator.prototype = {
     return splitInput[0]
   },
 
-  isValidInput: function(inputArray){
+  isInvalidInput: function(inputArray){
     for(var i = 0; i < inputArray.length; i++){
-      
+      if(this.isAnOperator(inputArray[i])){
+        if(isNaN(inputArray[i-1]) || isNaN(inputArray[i+1])){
+          return true
+        }
+      }
     }
     return false
   },

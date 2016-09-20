@@ -108,6 +108,11 @@ describe("Calculator Tests", function(){
     assert.equal(result, 42)
   })
 
+  it('handle invalid format input with extra operator at end of arguement', function(){
+    var result = calculator.calcInput("10 + 11 * 2 +")
+    assert.equal(result, "Invalid input")
+  })
+
 
 
 
