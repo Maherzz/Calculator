@@ -4,9 +4,10 @@ var Calculator = function(){}
 Calculator.prototype = {
 
   calcInput: function(input){
+    if(!input){return "0"}
     var splitInput = input.split(" ")
-    if(this.isInvalidInput(splitInput)){return "Invalid input"}
-    splitInput = this.bodmasCalc(splitInput, ["*", "/"])
+    if(this.isInvalidInput(splitInput)){return "0"}
+    splitInput = this.bodmasCalc(splitInput, ["x", "/"])
     splitInput = this.bodmasCalc(splitInput, ["+", "-"])
     return splitInput[0]
   },
@@ -48,7 +49,7 @@ Calculator.prototype = {
   },
 
   isAnOperatorMultiOrDivide: function(operator){
-    if(operator === '/' || operator === '*' ){
+    if(operator === '/' || operator === 'x' ){
       return true
     }
     return false
@@ -61,10 +62,20 @@ Calculator.prototype = {
     return false
   },
 
+  convertPercentage: function(input){
+    var result = this.calcInput(input)
+    console.log(result)
+    if(isNaN(result)){
+      return "0"
+    }else{
+      return this.divide(result, 100)
+    }
+  },
+
   isInvalidInput: function(inputArray){
     for(var i = 0; i < inputArray.length; i++){
       if(this.isAnOperator(inputArray[i])){
-        if(isNaN(inputArray[i-1]) || isNaN(inputArray[i+1])){
+        if(isNaN(parseFloat(inputArray[i-1])) || isNaN(parseFloat(inputArray[i+1]))){
           return true
         }
       }
@@ -73,7 +84,7 @@ Calculator.prototype = {
   },
 
   isAnOperator: function(operator){
-    if(operator === "+" || operator === "-" || operator === "*" || operator === "/"){
+    if(operator === "+" || operator === "-" || operator === "x" || operator === "/"){
       return true
     }
     return false
@@ -90,7 +101,7 @@ Calculator.prototype = {
         case "-":
             result = this.subtract(n1, n2)
             break;
-        case "*":
+        case "x":
             result = this.multiply(n1, n2)
             break;
         case "/":
